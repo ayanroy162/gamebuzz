@@ -10,7 +10,20 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-
+<div class="sidebar">
+    <h2> </h2>
+    <h2> </h2>
+    <h2> </h2>
+     <h2>G</h2>
+    <h2>A</h2>
+    <h2>M</h2>
+    <h2>E</h2>
+    <h2>B</h2>
+    <h2>U</h2>
+    <h2>Z</h2>
+    <h2>Z</h2>
+</div>
+<div class="main-content">
     <div class="container mt-4">
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -115,56 +128,76 @@
             
             
             
-        <!-- Total Players Box -->
         <div class="row">
-            <div class="col-md-8 text-center">
-                <div class="card">
-                    <div class="card-body" style="height: 500px;">
-                      
-                      <!-- Create multiple rows inside the column -->
-                			<div class="row">
-                    			<div class="col-md-12">
-                        			<!-- Content for the first row -->
-                        			</br>
-                        			</br>
-                        			</br>
-                        			<p style="text-align: left;"> Welcome to</p>
-                        			<h2 style="text-align: left;padding-left: 30px;"> GameBuzz </h2>
-                        			</br>
-                        			</br>
-                    			</div>
-                			</div>
-
-                <!-- Another row inside the column -->
-                			<div class="row">
-                    			<div class="col-md-12">
-                        		<!-- Content for the second row -->
-                        				<div id="typed-text">this is dummy text to show how to use
-                      					</div>
-                      					</br>
-                      					<div id="typed-text">this is dummy text to show how to use
-                      					</div>
-                   				 </div>
-                			</div>
-                	</div>
-            	</div>
-            	</div>
-            
-            <div class="col-md-4 mx-auto">
-             		<div class="card text-center" style="height: 250px;">
-             		<div class="card-header">
-                     <h3> FeedBack </h3>
-                     </div>
-                        <div class="card-body">
-                        <!-- Replace with dynamic content -->
-                        <p>No Feed Back Registered</p>
-                    	</div>
-                 	</div>
-             </div>
+    <div class="col-md-4 text-center">
+        <div class="card">
+            <div class="card-body">
+                <div class="image-container">
+                    <img src="/images/caram.jfif" alt="Image 1">
+                    <!-- Add more images as needed -->
+                </div>
+            </div>
         </div>
-
+    </div>
     
-        <!-- Individual Game Registration Modal -->/--
+    <div class="col-md-4 text-center">
+        <div class="card">
+            <div class="card-body">
+                <div class="image-container">
+                    <img src="/images/chess.jfif" alt="Image 2">
+                    <!-- Add more images as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <div class="card">
+            <div class="card-body">
+                <div class="image-container">
+                    <img src="/images/tennisone.jpg" alt="Image 2">
+                    <!-- Add more images as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 text-center">
+        <div class="card">
+            <div class="card-body">
+                <div class="image-container">
+                    <img src="/images/tabletennis.jfif" alt="Image 3">
+                    <!-- Add more images as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 text-center">
+        <div class="card">
+            <div class="card-body">
+                <div class="image-container">
+                    <img src="/images/ludo.jfif" alt="Image 4">
+                    <!-- Add more images as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <div class="card">
+            <div class="card-body">
+                <div class="image-container">
+                    <img src="/images/chessone.jpg" alt="Image 4">
+                    <!-- Add more images as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                      
+ </div>                     
+    
+        <!-- Individual Game Registration Modal -->
         <div class="modal fade" id="individualGameRegistrationModal" tabindex="-1" role="dialog" aria-labelledby="individualGameRegistrationModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -357,7 +390,7 @@
             </div>
         </div>
 
-    </div>
+</div>
 
     <!-- Modals (Placeholders) -->
     <!-- Admin Login Modal -->
