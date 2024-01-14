@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -72,6 +73,7 @@ public class RegistrationController {
 				model.addAttribute("userAcess", "userAcess");
 			}
 			model.addAttribute("userName", String.valueOf(userRepo.findById(userId).get().getName()));
+			model.addAttribute("userRole", String.valueOf(userRepo.findById(userId).get().getRole()));
 		}
 		return "/dashboard";
 	}
@@ -98,18 +100,30 @@ public class RegistrationController {
 	@PostMapping("/logout")
 	@ResponseBody
 	public ResponseEntity<String> userLogOut(HttpSession session) {
+		String userRole = (String) session.getAttribute("userRole");
+		HttpStatus status = HttpStatus.OK;
+		if(StringUtils.isNotEmpty(userRole)) {
 		session.invalidate();
+		}else {
+			status = HttpStatus.BAD_REQUEST;
+		}
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.TEXT_PLAIN);
-		return new ResponseEntity<>(new StringBuilder("Logout Successfully !!!").toString(), headers, HttpStatus.OK);
+		return new ResponseEntity<>(new StringBuilder("Logout Successfully !!!").toString(), headers, status);
 	}
 
 	@PostMapping("/register-individualGame-dashboard")
 	@ResponseBody
 	public ResponseEntity<String> registerIndividualGameDashBoardAjax(
 			@ModelAttribute("individualGame") String individualGame) {
+		StringBuilder sb = new StringBuilder();
+		try {
 		individualGameService.addNewIndividualGame(individualGame);
-		StringBuilder sb = new StringBuilder("Successfully added ");
+		sb.append("Successfully added");
+		
+		} catch(DataIntegrityViolationException e) {
+			sb.append("Game Is Already Resistered");
+		}
 		sb.append(individualGame);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.TEXT_PLAIN);
@@ -120,10 +134,16 @@ public class RegistrationController {
 	@ResponseBody
 	public ResponseEntity<String> registerTournamentDashBoard(@ModelAttribute("tournament") TournamentDto tournament,
 			@RequestParam(value = "selectedIndividualGames", required = false) String[] selectedIndividualGames) {
-		tournamentService.addNewTournament(tournament, selectedIndividualGames);
-		StringBuilder sb = new StringBuilder("Successfully added ");
-		sb.append(tournament.getTournamentName());
-		sb.append(". Dive in and enjoy the latest addition to our gaming experience!");
+		StringBuilder sb = new StringBuilder();
+		try {
+			tournamentService.registerNewTournament(tournament, selectedIndividualGames);
+			sb.append("Successfully added");
+			sb.append(tournament.getTournamentName());
+			sb.append(". Dive in and enjoy the latest addition to our gaming experience!");
+
+		} catch (DataIntegrityViolationException e) {
+			sb.append(tournament.getTournamentName()).append(" Is Already Resistered");
+		}
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.TEXT_PLAIN);
 		return new ResponseEntity<>(sb.toString(), headers, HttpStatus.OK);

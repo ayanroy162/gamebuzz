@@ -5,15 +5,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GaMeBuzz</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 <div class="sidebar">
-    <h2> </h2>
-    <h2> </h2>
-    <h2> </h2>
+    </br></br>
      <h2>G</h2>
     <h2>A</h2>
     <h2>M</h2>
@@ -23,7 +22,6 @@
     <h2>Z</h2>
     <h2>Z</h2>
 </div>
-<div class="main-content">
     <div class="container mt-4">
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,7 +36,7 @@
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#adminLogoutModal">${userName}</a>
                    		</c:when>
                    		<c:otherwise>
-                   		<a class="nav-link" href="#" data-toggle="modal" data-target="#adminLoginModal">Admin</a>
+                   		<a class="nav-link" href="#" data-toggle="modal" data-target="#adminLoginModal">Sign Up</a>
                     	</c:otherwise>
                     	</c:choose>
                     </li>
@@ -193,8 +191,6 @@
             </div>
         </div>
     </div>
-</div>
-                      
  </div>                     
     
         <!-- Individual Game Registration Modal -->
@@ -293,7 +289,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="adminLogoutModal">${userName}</h5>
+                        <h5 class="modal-title" id="adminLogoutModal">${userRole} &nbsp;${userName}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

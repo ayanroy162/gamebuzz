@@ -74,23 +74,8 @@ public class TournamentService {
 	}
 	
 	
-	public void addNewTournament(final TournamentDto tournamentDto, final String[] selectedIndividualGames) {
-		List<Tournament> allTournaments = tournamentRepo.findAll();
-		
-		if(!CollectionUtils.isEmpty(allTournaments)) {
-		Optional<Tournament> exsistingTournament = allTournaments.stream()
-				.filter(i -> i.getTournamentName().equalsIgnoreCase(tournamentDto.getTournamentName())).findAny();
-		if(!exsistingTournament.isPresent()) {
-			registerNewTournament(tournamentDto,selectedIndividualGames);
-		}else {
-			/* throw some error */
-		}
-		}else {
-			registerNewTournament(tournamentDto,selectedIndividualGames);
-		}
-	}
 	
-	private void registerNewTournament(final TournamentDto tournamentDto, final String[] selectedIndividualGames) {
+	public void registerNewTournament(final TournamentDto tournamentDto, final String[] selectedIndividualGames) {
 		Tournament tournament = new Tournament();
 		final String date = new Date().toString();
 		tournament.setTournamentName(tournamentDto.getTournamentName());
