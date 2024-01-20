@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<div class="sidebar">
+<div class="sidebar mt-4">
     </br></br>
      <h2>G</h2>
     <h2>A</h2>
@@ -24,7 +24,7 @@
 </div>
     <div class="container mt-4">
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,45 +36,46 @@
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#adminLogoutModal">${userName}</a>
                    		</c:when>
                    		<c:otherwise>
-                   		<a class="nav-link" href="#" data-toggle="modal" data-target="#adminLoginModal">Sign Up</a>
+                   		<a class="nav-link" href="#" data-toggle="modal" data-target="#adminLoginModal"><strong>Sign Up</strong></a>
                     	</c:otherwise>
                     	</c:choose>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#playerRegistrationModal"> Register as Player</a>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#playerRegistrationModal"> <strong>Join as a Player</strong></a>
                     </li>
                     <li class="nav-item">
                         <c:choose>
                 		<c:when test="${not empty adminAcess}">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#tournamentRegistrationModal">Tournament Registration</a>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#tournamentRegistrationModal"><strong>Tournament Registration</strong></a>
                     	</c:when>
                     	<c:otherwise>
-                    	<a class="nav-link" href="#" data-toggle="modal" data-target="#">Tournament Registration</a>
+                    	<a class="nav-link" href="#" data-toggle="modal" data-target="#"><strong>Tournament Registration</strong></a>
                     	</c:otherwise>
                     	</c:choose>
                     </li>
                     <li class="nav-item">
                     	<c:choose>
                 		<c:when test="${not empty adminAcess}">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#individualGameRegistrationModal">Register Game </a>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#individualGameRegistrationModal"><strong>Game Registration</strong></a>
                    		</c:when>
                     	<c:otherwise>
+                    	<a class="nav-link" href="#" data-toggle="modal" data-target="#"><strong>Game Registration</strong></a>
                     	</c:otherwise>
                     	</c:choose>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#showTournamentDetailsModal">All Tournaments</a>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#showTournamentDetailsModal"><strong>All Tournaments</strong></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#showPlayersDetailsModal">Players</a>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#showPlayersDetailsModal"><strong>Player Showcase</strong></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#showGameDetailsModal">Games</a>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#showGameDetailsModal"><strong>Games</strong></a>
                     </li>
                      <li class="nav-item dropdown">
            				 <a class="nav-link" href="#" id="navbarDropdown" role="button"
                 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                				Active Tournaments
+                				<strong>Explore Active Tournaments</strong>
             			</a>
             				<c:if test="${not empty allTournamentDtos}">
                 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -129,7 +130,7 @@
         <div class="row">
     <div class="col-md-4 text-center">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="border-radius: 0px;">
                 <div class="image-container">
                     <img src="/images/caram.jfif" alt="Image 1">
                     <!-- Add more images as needed -->
@@ -140,7 +141,7 @@
     
     <div class="col-md-4 text-center">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="border-radius: 0px;">
                 <div class="image-container">
                     <img src="/images/chess.jfif" alt="Image 2">
                     <!-- Add more images as needed -->
@@ -150,7 +151,7 @@
     </div>
     <div class="col-md-4 text-center">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="border-radius: 0px;">
                 <div class="image-container">
                     <img src="/images/tennisone.jpg" alt="Image 2">
                     <!-- Add more images as needed -->
@@ -162,7 +163,7 @@
 <div class="row">
     <div class="col-md-4 text-center">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="border-radius: 0px;">
                 <div class="image-container">
                     <img src="/images/tabletennis.jfif" alt="Image 3">
                     <!-- Add more images as needed -->
@@ -173,7 +174,7 @@
     
     <div class="col-md-4 text-center">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="border-radius: 0px;">
                 <div class="image-container">
                     <img src="/images/ludo.jfif" alt="Image 4">
                     <!-- Add more images as needed -->
@@ -183,7 +184,7 @@
     </div>
     <div class="col-md-4 text-center">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="border-radius: 0px;">
                 <div class="image-container">
                     <img src="/images/chessone.jpg" alt="Image 4">
                     <!-- Add more images as needed -->
@@ -198,22 +199,24 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="individualGameRegistrationModalLabel">Individual Game Registration</h5>
+                        <h5 class="modal-title" id="individualGameRegistrationModalLabel">Game Registration</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <form id="gameRegistration" modelAttribute="individualGame">
                     <div class="modal-body">
                         <!-- Add your individual game registration form here -->
                         <!-- For simplicity, I'm just adding a dummy form -->
-                        <form id="gameRegistration" modelAttribute="individualGame">
                             <div class="form-group">
                                 <label for="gameName">Game Name:</label>
                                 <input type="text" class="form-control" id="individualGame" name="individualGame" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Register</button>
-                        </form>
                     </div>
+                    <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                  </form>
                 </div>
             </div>
         </div>
@@ -222,15 +225,14 @@
         <div class="modal fade" id="playerRegistrationModal" tabindex="-1" role="dialog" aria-labelledby="playerRegistrationModal" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="playerRegistrationModal">Individual Player Registration</h5>
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="playerRegistrationModal">Register as a Player</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeplayerRegistrationModalBtn">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <form:form modelAttribute="playerResistrationDto" id="newPlayerRegistration">
                     <div class="modal-body">
-        
-        				<form:form modelAttribute="playerResistrationDto" id="newPlayerRegistration">
         					<label for="name">Name:</label>
         					<input type="text" class="form-control" id="name" name="name" required>
         					<label for="phoneNumber">Phone Number:</label>
@@ -250,10 +252,13 @@
     						<form:select path="gameId" id="gameId" class="form-control">
         					<!-- Options for selectedOption2 will be loaded dynamically based on selectedOption1 -->
     						</form:select>
-
-    						<input type="submit" value="Submit" class="btn btn-primary"/>
+						</div>
+						
+    						<div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
 						</form:form>
-         			</div>
+         			
                 </div>
             </div>
         </div>
@@ -268,19 +273,21 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                     <form id="userLogin">
                     <div class="modal-body">
                         <!-- Add your individual game registration form here -->
                         <!-- For simplicity, I'm just adding a dummy form -->
-                        <form id="userLogin">
                             <div class="form-group">
                                 <label for="username">User Name:</label>
                                 <input type="text" class="form-control" id="username" name="username" required>
                                 <label for="userpassword">Password:</label>
                                 <input type="text" class="form-control" id="userpassword" name="userpassword" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
-                        </form>
+                        <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Login</button>
                     </div>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -294,16 +301,15 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
                         <!-- Add your individual game registration form here -->
                         <!-- For simplicity, I'm just adding a dummy form -->
                         <form id="userLogout">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Logout</button>
+                            <div class="modal-footer">
+                    		<button type="submit" class="btn btn-primary">Logout</button>
+                    		</div>
                             </div>
-                            
                         </form>
-                    </div>
                 </div>
             </div>
         </div>
@@ -317,10 +323,10 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <form id="tournamentRegistration" modelAttribute="tournament">
                     <div class="modal-body">
                         <!-- Add your individual game registration form here -->
                         <!-- For simplicity, I'm just adding a dummy form -->
-                        <form id="tournamentRegistration" modelAttribute="tournament">
                             <div class="form-group">
                                 <label for="tournamentName">Tournament Name:</label>
                                 <input type="text" class="form-control" id="tournamentName" name="tournamentName" required>
@@ -331,9 +337,11 @@
                 					</label>
     							</c:forEach>
                             </div>
-                            <button type="submit" class="btn btn-primary">Register</button>
+                            </div>
+                            <div class="modal-footer">
+                    		<button type="submit" class="btn btn-primary">Register</button>
+                    		</div>
                         </form>
-                    </div>
                 </div>
             </div>
         </div>

@@ -1,20 +1,21 @@
 .sidebar {
             height: 100%;
             width: 50px;
-            position: fixed;
+            position: absolute;
             z-index: 1;
             top: 0;
             left: 0;
-            background-color: #111;
-            padding-top: 20px;
-            text-align: center;
-            color: white;
+            background-color: rgb(0, 0, 0);
+           padding-top: 70px;
+           text-align: center;
+           color: white;
             display: flex;
             flex-direction: column;
+            border-radius: 30px;
         }
 .image-container {
             display: flex;
-            transition: transform 1s ease-in-out;
+            transition: transform 0.5s ease-in-out;
             width: 100%; /* Four times the number of images to accommodate all images */
         }
 
@@ -22,30 +23,25 @@
             width: 100%; /* Set to 50% if you have only two columns */
             object-fit: cover;
         }
-.body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
-    margin: 20px;
-    padding: 0;
-    color: #333;
-    width: 100%;
-    overflow-x: hidden;
-}
+        .image-container:hover {
+            transform: scale(0.9); /* Adjust the scale factor as needed */
+        }
 
 .container {
     width: 100%;
     margin: auto;
-    background-color: #fff;
+    background-color: #ecf0f1;
     padding: 20px;
     margin-top: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 90vw;
+    border-radius: 30px;
 }
-
 .navbar {
     margin-bottom: 20px;
-    margin-right: 20px;
-    margin-left: 20px;
     font-family: 'Geneva',Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 30px;
+    background-color:white;
 }
 .nav-item {
     margin-right: 5px;
@@ -70,6 +66,7 @@
 .card-body {
     background-color: #ecf0f1;
     padding: 0;
+    border-radius: 30px;
 }
 
 .table th, .table td {
@@ -84,10 +81,17 @@
 .modal-header {
     background-color: #3498db;
     color: white;
+    border-top-left-radius: calc(1.3rem - 1px);
+    border-top-right-radius: calc(1.3rem - 1px);
 }
 
 .modal-content {
     background-color: #ecf0f1;
+    border-radius: 1.53rem;
+}
+.modal-footer {
+    background-color: #ecf0f1;
+    border-radius: 1.53rem;
 }
 
 .modal-body {
@@ -109,6 +113,11 @@
 
 .text-center {
     text-align: center;
+    font-family:verdana;
+}
+
+.ch-space{
+	letter-spacing: 5px;
 }
 
 .mb-4 {
@@ -193,25 +202,38 @@
         }
 
         .round-details {
-            border: 1px solid #ddd;
+            border: 1px solid #f2f2f2;
             padding: 10px;
             margin-top: 20px;
         }
-
+.card-details{
+	background-color:#fff;
+	color:blue;
+	font-family:courier;
+	}
+.text-size{
+	font-size: 2.25rem;
+	color:black;
+	font-family:verdana;
+}
 .round-table {
             width: 100%;
             margin-top: 20px;
+            background-color: white;
         }
 
         .round-table th,
         .round-table td {
-            border: 1px solid #ddd;
             padding: 10px;
             text-align: center;
         }
 
         .round-table th {
-            background-color: #f2f2f2;
+            background-color: white;
+            font-family:verdana
+        }
+        .round-table td {
+            font-family:courier;
         }
         .arrow {
             cursor: pointer;

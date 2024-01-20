@@ -15,29 +15,28 @@
 <body>
 
      <div class="container mt-4">
+     <h2 class="text-center" style="letter-spacing: 10px;">${game.name}</h2>
         <div class="card-deck">
             <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title">No. of Players</h5>
-                    <p class="card-text">${game.numberOfPlayers}</p>
+                <div class="card-body text-center card-details">
+                    <p class="card-title ch-space">Total Players</p>
+                    <p class="card-text text-size"><strong>${game.numberOfPlayers}</strong></p>
                 </div>
             </div>
             <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Active State</h5>
-                    <p class="card-text">TRUE</p>
+                <div class="card-body text-center card-details">
+                    <p class="card-title ch-space">Active State</p>
+                    <p class="card-text text-size"><strong>TRUE</strong></p>
                 </div>
             </div>
             <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Total Rounds</h5>
-                    <p class="card-text">${game.numberOfRounds}</p>
+                <div class="card-body text-center card-details">
+                    <p class="card-title ch-space">Total Rounds</p>
+                    <p class="card-text text-size"><strong>${game.numberOfRounds}</strong></p>
                 </div>
             </div>
         </div>
         <div class="round-details">
-            <h2 class="text-center">${game.name}</h2>
-            <p>${game.rules}</p>
             <div class="text-center mt-4">
             <span class="arrow" id="prevRound" data-roundid="${param.roundNumber}">❮</span>
     		<span class="arrow" id="nextRound" data-roundid="${param.roundNumber}" data-roundmaxnumber="${game.numberOfRounds}">❯</span>
