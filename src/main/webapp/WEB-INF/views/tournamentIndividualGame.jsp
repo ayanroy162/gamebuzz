@@ -14,8 +14,18 @@
 </head>
 <body>
 
-     <div class="container mt-4">
-     <h2 class="text-center" style="letter-spacing: 10px;">${game.name}</h2>
+     <div class="container mt-4" style="border: 5px solid #747e77;">
+     
+     <h2 class="text-right" style="letter-spacing: 2px; font-size: 14px">
+     <c:choose>
+     <c:when test="${game.active}">
+     <span class="dot" style="background-color: #1de14a;"></span>&nbsp;Active
+     </c:when>
+     <c:otherwise>
+     <span class="dot" style="background-color: #FF0000;"></span>&nbsp;Inactive
+     </c:otherwise>
+     </c:choose>
+     </h2>
         <div class="card-deck">
             <div class="card">
                 <div class="card-body text-center card-details">
@@ -25,8 +35,7 @@
             </div>
             <div class="card">
                 <div class="card-body text-center card-details">
-                    <p class="card-title ch-space">Active State</p>
-                    <p class="card-text text-size"><strong>TRUE</strong></p>
+                    <p class="card-text text-size" style="margin-top:10px"><strong>${game.name}</strong></p>
                 </div>
             </div>
             <div class="card">
@@ -37,10 +46,22 @@
             </div>
         </div>
         <div class="round-details">
-            <div class="text-center mt-4">
+             <table class="swap-details">
+            <tr>
+            <td class="text-right">
             <span class="arrow" id="prevRound" data-roundid="${param.roundNumber}">❮</span>
+            </td>
+            <td class="text-center">
+            <div style="font-size: 20px;font-family:verdana;">&nbsp;&nbsp;ROUND ${param.roundNumber}&nbsp;&nbsp;</div>
+            </td>
+            <td class="text-left">
     		<span class="arrow" id="nextRound" data-roundid="${param.roundNumber}" data-roundmaxnumber="${game.numberOfRounds}">❯</span>
-        	</div>
+            </td>
+            <td class="text-center" style="width: 30%">
+            <div class="swap-button" style="letter-spacing: 12px;">SWAP</div>
+            </td>
+            </tr>
+            </table>
             <table class="round-table mx-auto">
                 <thead>
                     <tr>
@@ -102,12 +123,12 @@
                 <tr>
                 <td colspan="3">
                 <c:choose>
-                <c:when test="${not empty adminAcess || not empty userAcess}">
+                <c:when test="${(not empty adminAcess || not empty userAcess) && game.roundGenerated eq 'false'}">
                 <div class="box" 
                 data-box-game-id="${game.id}" data-box-tournament-id="${tournamentId}" >Generate Rounds</div>
                 </c:when>
                 <c:otherwise>
-                Generate Generated
+                Opps Round is not Generated ...
                 </c:otherwise>
                 </c:choose>
                 </td>
@@ -119,8 +140,6 @@
         </div>
 
         <div class="text-center mt-4">
-    <span class="arrow" id="prevRound" data-roundid="${param.roundNumber}">❮</span>
-    <span class="arrow" id="nextRound" data-roundid="${param.roundNumber}">❯</span>
     <input type="hidden" id="gameId" name="gameId" value="${param.gameId}"/>
     <input type="hidden" id="tournamentId" name="tournamentId" value="${param.tournamentId}"/>
     <input type="number" id="roundId" name="roundId" style="display: none" value="${param.roundNumber}"/>
@@ -190,6 +209,33 @@
     	</div>
     
     </div>
+    
+    <div class="modal fade" id="sweepModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    	<div class="modal-dialog" role="document">
+        			<div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                   		 </div>
+                   		 <form id="swapPlayer">
+            				<div class="modal-body">
+                <!-- Modal content goes here -->
+                				<label for="swapPlayerOne">Select Payer For Swap:</label>
+    							<select id="swapPlayerOne" name="swapPlayerOne">
+    							</select>
+    							</br>
+    							<label for="swapPlayerTwo">Select Swap Player:</label>
+    							<select id="swapPlayerTwo" name="swapPlayerTwo">
+    							</select>
+            				</div>
+            				<div class="modal-footer">
+                    			<button type="submit" class="btn btn-primary">Submit</button>
+                   		   </div>
+            			  </form>
+        			</div>
+    	</div>
+    </div>
 
 
 
@@ -228,6 +274,68 @@
         	$("#roundId").attr("roundId",1);
             console.log("Input is null or empty");
         }
+        
+        $('.swap-button').click(function () {
+        var gameId = $("#gameId").val();
+        	var tournamentId = $("#tournamentId").val();
+        	var roundId = $("#roundId").val();
+         var geturl = '/swap-player?gameId=' + gameId + '&roundId=' + roundId;
+          $.ajax({
+            url: geturl,
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                // Populate the dropdown with dynamic data
+                populateDropdown(data);
+                $('#sweepModel').modal('show');
+            },
+            error: function() {
+                console.error('Error fetching dynamic map values');
+            }
+        });
+        });
+        
+         function populateDropdown(data) {
+            var swapplayerone = $('#swapPlayerOne'); // Replace with the actual ID of your dropdown
+			var swapplayertwo = $('#swapPlayerTwo');
+            // Clear existing options
+            swapplayerone.empty();
+            swapplayertwo.empty();
+
+            // Iterate over the map and populate options
+                $.each(data, function(index, option) {
+                	var optionValue = option.playingPlayerId+':'+option.playingPlayerNumber;
+                    var optionOne = $('<option value="' + optionValue + '">' + option.playingPlayer + '</option>');
+                    var optionTwo = $('<option value="' + optionValue + '">' + option.playingPlayer + '</option>');
+                    swapplayerone.append(optionOne);
+                    swapplayertwo.append(optionTwo);
+                });
+        }
+        
+        $("#swapPlayer").submit(function () {
+    		event.preventDefault();
+    		var clickedElement = $(this);
+    		var gameId = $("#gameId").val();
+        	var tournamentId = $("#tournamentId").val();
+        	var roundId = $("#roundId").val();
+            var geturl = '/tournamentIndividualGame?gameId=' + gameId + '&tournamentId=' + tournamentId + '&roundNumber=' + roundId;
+            var formData = $(this).serialize();
+            $('#sweepModel').modal('hide');
+            $.ajax({
+                type: "POST",
+                url: "/setSwapPlayer",
+                data: formData,
+                contentType: "application/x-www-form-urlencoded",
+                dataType: "text",
+                success: function (data) {
+                     window.location.href = geturl;
+                },
+                error: function (error) {
+                    console.error("Error:", error);
+                }
+            });
+        });
+        
         $("#prevRound").on("click", function() {
         	var gameId = $("#gameId").val();
         	var tournamentId = $("#tournamentId").val();
@@ -246,7 +354,9 @@
         	var tournamentId = $("#tournamentId").val();
         	var roundId = parseInt($("#roundId").val())+1;
         	var geturl = '/tournamentIndividualGame?gameId=' + gameId + '&tournamentId=' + tournamentId + '&roundNumber=' + roundId;
+            if(roundId <= maxround){
             window.location.href = geturl;
+            }
         });
         
         $('.win').click(function () {

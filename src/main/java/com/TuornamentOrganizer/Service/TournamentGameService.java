@@ -37,6 +37,7 @@ public class TournamentGameService {
 				dto.setRules(game.getRules());
 				dto.setRounds(null);
 				dto.setRoundGenerated(false);
+				dto.setActive(game.isActive());
 				if (!CollectionUtils.isEmpty(game.getRounds())) {
 					int longRoundNumber = Integer.parseInt(roundNumber)!=0 ? Integer.parseInt(roundNumber) : 1;
 					Round round = game.getRounds().stream().filter(i -> i.getRoundnumber()== longRoundNumber)

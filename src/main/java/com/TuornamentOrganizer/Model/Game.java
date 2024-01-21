@@ -29,6 +29,7 @@ public class Game {
 	private String rules;
 	private String totaNumberOfRounds;
 	private boolean roundGenerated;
+	private boolean active;
 
 	@OneToMany(mappedBy = "game", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Player> player = new ArrayList<>();
@@ -98,6 +99,14 @@ public class Game {
 
 	public void setRoundGenerated(boolean roundGenerated) {
 		this.roundGenerated = roundGenerated;
+	}
+
+	public boolean isActive() {
+		return this.active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	
 	

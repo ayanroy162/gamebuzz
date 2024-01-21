@@ -56,6 +56,7 @@
     
 .card {
     margin-bottom: 20px;
+    border-radius: 30px;
 }
 
 .card-header {
@@ -202,24 +203,45 @@
         }
 
         .round-details {
-            border: 1px solid #f2f2f2;
             padding: 10px;
             margin-top: 20px;
+            border-radius: 30px;
         }
 .card-details{
 	background-color:#fff;
 	color:blue;
-	font-family:courier;
+	border: 2px solid #747e77;
 	}
 .text-size{
 	font-size: 2.25rem;
 	color:black;
 	font-family:verdana;
 }
+.swap-details{
+	width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.swap-button{
+	border: 1px solid #ccc;
+        padding: 10px;
+        margin-left: 150px;
+        margin-right: 10px;
+        text-align: center;
+        box-sizing: border-box;
+        cursor: pointer;
+        border-radius: 50px;
+        transition: background-color 0.3s ease;
+        background-color: #dbaf34;
+        color: #fff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 .round-table {
             width: 100%;
             margin-top: 20px;
             background-color: white;
+            border: 2px solid #747e77;
+            border-radius: 30px;
         }
 
         .round-table th,
@@ -242,3 +264,10 @@
         .round-row {
             margin-bottom: 10px;
         }
+        
+        .dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
+}

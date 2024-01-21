@@ -1,7 +1,9 @@
 package com.TuornamentOrganizer.Controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ import com.TuornamentOrganizer.Dto.GameDto;
 import com.TuornamentOrganizer.Dto.GamePlayerDto;
 import com.TuornamentOrganizer.Dto.LossingPlayerDto;
 import com.TuornamentOrganizer.Dto.PlayerResistrationDto;
+import com.TuornamentOrganizer.Dto.SwappingPlayerInformationDto;
 import com.TuornamentOrganizer.Dto.TournamentDto;
 import com.TuornamentOrganizer.Model.Game;
 import com.TuornamentOrganizer.Model.IndividualGame;
@@ -256,4 +259,25 @@ public class RegistrationController {
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}
 	
+	@GetMapping("/swap-player")
+	@ResponseBody
+	public ResponseEntity<List<SwappingPlayerInformationDto>> getPlayersforSwaping(
+			@RequestParam(value = "gameId", required = true) 
+			String gameId,@RequestParam(value = "roundId", required = true) 
+			String roundId) {
+		List<SwappingPlayerInformationDto> playersList = roundService.getPlayersForSwaping(gameId,roundId);
+		return new ResponseEntity<>(playersList, HttpStatus.OK);
+	}
+	
+	@PostMapping("/setSwapPlayer")
+	@ResponseBody
+	public ResponseEntity<String> setSwapPlayers(
+			@RequestParam(value = "swapPlayerOne", required = true) 
+			String swapPlayerOne,@RequestParam(value = "swapPlayerTwo", required = true) 
+			String swapPlayerTwo) {
+		if(!swapPlayerOne.equalsIgnoreCase(swapPlayerTwo)) {
+		roundService.setPlayersForSwaping(swapPlayerOne,swapPlayerTwo);
+		}
+		return new ResponseEntity<>("ok", HttpStatus.OK);
+	}
 }

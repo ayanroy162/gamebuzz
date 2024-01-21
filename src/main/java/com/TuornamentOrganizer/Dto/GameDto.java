@@ -12,6 +12,7 @@ public class GameDto {
 	private String numberOfRounds;
 	private String numberOfPlayers;
 	private boolean roundGenerated;
+	private boolean active;
 	
 	private List<Round> rounds;
 
@@ -75,6 +76,33 @@ public class GameDto {
 	public void setRoundGenerated(boolean roundGenerated) {
 		this.roundGenerated = roundGenerated;
 	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public GameDto(long id, String name, String rules, String numberOfRounds, String numberOfPlayers,
+			boolean roundGenerated, boolean active, List<Round> rounds) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.rules = rules;
+		this.numberOfRounds = numberOfRounds;
+		this.numberOfPlayers = numberOfPlayers;
+		this.roundGenerated = roundGenerated;
+		this.active = active;
+		this.rounds = rounds;
+	}
+
+	public GameDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	
 	
 	
